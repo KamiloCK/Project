@@ -1,0 +1,31 @@
+import random
+
+class GraZgadywanie:
+    def __init__(self):
+        self.min_liczba = 1
+        self.max_liczba = 100
+        self.liczba_do_zgadniecia = random.randint(self.min_liczba, self.max_liczba)
+        self.proby = 0
+
+    def rozpocznij_gre(self):
+        print("Witaj w grze zgadywanie liczby!")
+        print(f"Zgadnij liczbę między {self.min_liczba} a {self.max_liczba}")
+
+        while True:
+            try:
+                strzal = int(input("Podaj swoją liczbę: "))
+                self.proby += 1
+
+                if strzal < self.liczba_do_zgadniecia:
+                    print("Za mało! Spróbuj ponownie.")
+                elif strzal > self.liczba_do_zgadniecia:
+                    print("Za dużo! Spróbuj ponownie.")
+                else:
+                    print(f"Gratulacje! Zgadłeś liczbę {self.liczba_do_zgadniecia} w {self.proby} próbach.")
+                    break  
+            except ValueError:
+                print("Nieprawidłowa wartość. Podaj liczbę całkowitą.")
+
+if __name__ == "__main__":
+    gra = GraZgadywanie()
+    gra.rozpocznij_gre()
